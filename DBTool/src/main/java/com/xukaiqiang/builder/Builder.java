@@ -46,7 +46,7 @@ public class Builder {
 				//插入字段记录
 				dbHelper.insertFieldRecord(tableDB_Name);
 			}else{
-				System.err.println("表已经插入了........");
+				System.err.println("表("+tableDB_Name+")内容已经插入了........");
 			}
 		}
 	}
