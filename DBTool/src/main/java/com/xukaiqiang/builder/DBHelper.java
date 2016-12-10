@@ -107,7 +107,7 @@ public class DBHelper {
 			insertTableRecord(dataDTO);
 			System.out.println(column.getRemark()+"插入成功");
 		}
-		System.out.println("--------------------------------------------------插入结束--------------------------------------------------");
+		System.out.println("--------------------------------------------------("+tableName+")插入结束--------------------------------------------------");
 	}
 	
 	
