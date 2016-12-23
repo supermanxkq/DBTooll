@@ -22,13 +22,15 @@ public class Builder {
 		String tableDB_Name=PropertyUtils.getValue("table_db_Name", "db.properties");
 		String table_Name=PropertyUtils.getValue("table_name", "db.properties");
 		String java_name=PropertyUtils.getValue("java_name", "db.properties");
-		//获取表的名称
+		//获取表的名称DropDbreMetadata
 		//插入表记录
 		DBHelper dbHelper=new DBHelper();
 		DataDTO dataDTO=new DataDTO(tableDB_Name, java_name, "cb", "table", table_Name);
+		//删除dbre_metadata表中的数据
+		 dbHelper.truncateDbreMetadata();
 		//判断表中的注释是否有空的
 		List<Column> columns=dbHelper.queryColumns(tableDB_Name);
-		//数据库字段是否都有注释了
+		System.out.println("检查数据库字段是否都有注释了.................");
 		boolean  remarkIsOk=true;
 		for (Column column : columns) {
 			if("".equals(column.getRemark())||null==column.getRemark()){
@@ -36,7 +38,6 @@ public class Builder {
 				System.err.println(column.getName()+"在数据库表("+tableDB_Name+")中没有注释，请插入后重试！！");
 			}
 		}
-		
 		if (remarkIsOk) {
 			//判断表是否已经插入
 			boolean isSaved=dbHelper.isSaved(dataDTO.getDb_name());

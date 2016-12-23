@@ -54,6 +54,29 @@ public class DBHelper {
 			}
 	}
 	
+	/**
+	 * Class Name: DBHelper.java
+	 * @Description: 清空dbre_metadata表中的内容
+	 * @author xukaiqiang
+	 * @date 2016年12月22日 下午6:04:36
+	 * @modifier
+	 * @modify-date 2016年12月22日 下午6:04:36
+	 * @version 1.0
+	 * @return
+	*/
+	public  void truncateDbreMetadata(){
+		try {
+			Connection connection=getConn();
+			String sql = "truncate table dbre_metadata";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.executeUpdate();
+			System.out.println("清空表dbre_metadata...................");
+			closeConn(connection);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
 	
 	/**
 	 * Class Name: DBHelper.java
