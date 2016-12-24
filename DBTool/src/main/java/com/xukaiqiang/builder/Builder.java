@@ -43,7 +43,6 @@ public class Builder {
 			boolean isSaved=dbHelper.isSaved(dataDTO.getDb_name());
 			if (isSaved) {
 				dbHelper.insertTableRecord(dataDTO);
-				//获取表中的字段
 				//插入字段记录
 				dbHelper.insertFieldRecord(tableDB_Name);
 			}else{

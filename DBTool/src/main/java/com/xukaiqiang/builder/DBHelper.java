@@ -37,6 +37,7 @@ public class DBHelper {
 	 * @param dataDTO
 	 */
 	public void insertTableRecord(DataDTO dataDTO) {
+		synchronized (this) {
 		try {
 			Connection connection=getConn();
 			String sql = "insert into dbre_metadata (db_name,java_name,parent_name,data_type,remarks) values(?,?,?,?,?)";
@@ -52,6 +53,7 @@ public class DBHelper {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
 	}
 	
 	/**
@@ -128,7 +130,6 @@ public class DBHelper {
 			dataDTO.setJava_name(column.getNameJ());
 			dataDTO.setRemarks(column.getRemark());
 			insertTableRecord(dataDTO);
-			System.out.println(column.getRemark()+"插入成功");
 		}
 		System.out.println("--------------------------------------------------("+tableName+")插入结束--------------------------------------------------");
 	}
